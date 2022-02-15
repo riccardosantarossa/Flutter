@@ -1,6 +1,7 @@
 //SANTAROSSA RICCARDO 5BIA 13/01/2022
 
 import 'package:flutter/material.dart';
+import 'package:mylistapp/homePage.dart';
 // ignore: unused_import
 import 'SecondScreen.dart';
 import './textdisplay.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,        
       ),
-      home: MyHomePage(title: 'ListApp'),
+      home: homePage(),
       // Define here the routes for the other app screens:
       routes: {
         '/secondscreen' : (ctx) => SecondScreen(),
@@ -49,16 +50,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var _index = 0;
 
-  var _displayMessages = [
-      'Hello World',
-      'Ciao Mondo',
-      'Hallo Welt',
-      'Bonjour le Monde',
-      'Hola Mundo',
-      'Saluton mondo',
-    ];
 
   // Lista elementi
   final todos = List.generate(
@@ -68,18 +60,6 @@ class _MyHomePageState extends State<MyHomePage> {
     'A description of what needs to be done for Todo $i',
     ),
   );
-
-  void _changeMessage() {
-    setState(() {
-      if(_index >= _displayMessages.length -1) 
-        _index = 0;
-      
-      else
-        _index += 1;
-      
-    });
-    print(_index);
-  }
 
   @override
   Widget build(BuildContext context) {
