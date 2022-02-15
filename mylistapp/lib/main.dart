@@ -9,22 +9,16 @@ void main() => runApp(MyApp());
 
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Listapp',
       theme: ThemeData(
-      
         primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,        
       ),
       home: MyHomePage(title: 'ListApp'),
-      // Define here the routes for the other app screens:
       routes: {
         '/secondscreen' : (ctx) => SecondScreen(),
       } ,
@@ -36,10 +30,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
 
-  // Simil overloading:
   MyHomePage.myconstr({required this.title});
-  // final boh = MyHomePage.myconstr(title: 'Pippo',);
-  
   final String title;
 
   @override
