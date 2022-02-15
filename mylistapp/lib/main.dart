@@ -1,11 +1,8 @@
 //SANTAROSSA RICCARDO 5BIA 13/01/2022
 
 import 'package:flutter/material.dart';
-import 'package:mylistapp/homePage.dart';
 // ignore: unused_import
 import 'SecondScreen.dart';
-import './textdisplay.dart';
-import './button.dart';
 import 'todo.dart';
 
 void main() => runApp(MyApp());
@@ -20,13 +17,13 @@ class MyApp extends StatelessWidget {
       title: 'Listapp',
       theme: ThemeData(
       
-        primarySwatch: Colors.brown,
+        primarySwatch: Colors.blue,
         // This makes the visual density adapt to the platform that you run
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,        
       ),
-      home: homePage(),
+      home: MyHomePage(title: 'ListApp'),
       // Define here the routes for the other app screens:
       routes: {
         '/secondscreen' : (ctx) => SecondScreen(),
@@ -79,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 arguments: {
                 'todo': todos[index],          
               }
-            );
+              );
       },
     );
   },
