@@ -1,31 +1,30 @@
 //SANTAROSSA RICCARDO 5BIA 13/01/2022
 
 import 'package:flutter/material.dart';
+import 'package:mylistapp/insertScreen.dart';
 // ignore: unused_import
 import 'SecondScreen.dart';
 import 'todo.dart';
 
 void main() => runApp(MyApp());
 
-
 class MyApp extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Listapp',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,        
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(title: 'ListApp'),
       routes: {
-        '/secondscreen' : (ctx) => SecondScreen(),
-      } ,
+        '/secondscreen': (ctx) => SecondScreen(),
+        '/insertscreen': (ctx) => insertScreen(),
+      },
     );
   }
 }
-
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -38,40 +37,50 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   // Lista elementi
-  final todos = List.generate(
+  var todos = List.generate(
     20,
     (i) => Todo(
-    'Todo $i',
-    'A description of what needs to be done for Todo $i',
+      'Todo $i',
+      'A description of what needs to be done for Todo $i',
     ),
   );
 
+  void retrieveData(BuildContext context) async {
+    final data = await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => insertScreen(),
+        ));
+    todos.add(data);
+  }
+
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: ListView.builder(
-          itemCount: todos.length,
-          itemBuilder: (context, index) {
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: ListView.builder(
+        itemCount: todos.length,
+        itemBuilder: (context, index) {
           return ListTile(
             title: Text(todos[index].title),
             onTap: () {
-              Navigator.of(context).pushNamed(
-              '/secondscreen',
-                arguments: {
-                'todo': todos[index],          
-              }
-              );
-      },
-    );
-  },
-        ),      
+              Navigator.of(context).pushNamed('/secondscreen', arguments: {
+                'todo': todos[index],
+              });
+            },
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed('/insertscreen');
+        },
+        backgroundColor: Colors.blue,
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
