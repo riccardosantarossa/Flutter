@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'todo.dart';
 
-//import './textdisplay.dart';
-//import './button.dart';
 
 class SecondScreen extends StatelessWidget {
   const SecondScreen({Key? key}) : super(key: key);
