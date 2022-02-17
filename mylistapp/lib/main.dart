@@ -37,22 +37,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // Lista elementi
-  var todos = List.generate(
-    20,
-    (i) => Todo(
-      'Todo $i',
-      'A description of what needs to be done for Todo $i',
-    ),
-  );
+  final List<Todo> todos = [];
 
   void retrieveData(BuildContext context) async {
-    final data = await Navigator.push(
+    final Todo data = await Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => insertScreen(),
         ));
-    todos.add(data);
+    setState(() {
+      todos.add(data);
+    });
   }
 
   @override
@@ -77,6 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).pushNamed('/insertscreen');
+          retrieveData(context);
         },
         backgroundColor: Colors.blue,
         child: Icon(Icons.add),

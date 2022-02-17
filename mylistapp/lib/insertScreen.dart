@@ -43,9 +43,10 @@ class insertScreen extends StatelessWidget {
                   color: Colors.blue,
                   child: Text('Submit'),
                   onPressed: () {
-                    ScaffoldMessenger.of(context)
-                        .showSnackBar(SnackBar(content: Text('Elemento inserito correttamente')));
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text('Elemento inserito correttamente')));
                     passData(context);
+                    Navigator.pop(context);
                   }),
             ],
           ),
