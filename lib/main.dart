@@ -4,7 +4,6 @@
 import 'dart:developer';
 import 'dart:math';
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:html/dom_parsing.dart';
 import 'package:html/dom.dart' as htmlParser;
