@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
       (
         primarySwatch: Colors.blue,
       ),
+      //Opzione tema scuro
       /*darkTheme: ThemeData(
         brightness: Brightness.dark,
       ),
